@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { Suspense } from 'react';
 import SignInForm from './form';
 
 export default function SignInPage() {
@@ -20,7 +21,9 @@ export default function SignInPage() {
           <p className="text-ink-soft mt-3">Connectez-vous à votre compte</p>
         </div>
         <div className="bg-white rounded-2xl shadow-card border border-line p-6">
-          <SignInForm />
+          <Suspense fallback={null}>
+            <SignInForm />
+          </Suspense>
         </div>
         <p className="text-center text-sm text-ink-soft mt-6">
           Pas encore de compte ?{' '}
