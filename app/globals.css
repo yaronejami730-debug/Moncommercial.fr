@@ -1,26 +1,93 @@
 @import "tailwindcss";
+@source "../app/**/*.{tsx,ts,jsx,js}";
+@source "../components/**/*.{tsx,ts,jsx,js}";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Primary — vibrant orange énergie (solaire) */
+  --color-brand: #ea580c;
+  --color-brand-hover: #c2410c;
+  --color-brand-soft: #fff1e6;
+  --color-brand-ring: #fed7aa;
+
+  /* Verification / trust — teal */
+  --color-verify: #059669;
+  --color-verify-soft: #d1fae5;
+
+  /* Stars / gold */
+  --color-star: #f59e0b;
+
+  /* Neutrals */
+  --color-ink: #1a202c;
+  --color-ink-soft: #4a5568;
+  --color-ink-muted: #718096;
+  --color-ink-faint: #a0aec0;
+  --color-paper: #ffffff;
+  --color-paper-tint: #f7fafc;
+  --color-paper-warm: #fffaf2;
+  --color-line: #e2e8f0;
+  --color-line-soft: #edf2f7;
+
+  --font-display: var(--font-manrope, "Manrope"), sans-serif;
+  --font-body: var(--font-inter, "Inter"), sans-serif;
+  --font-sans: var(--font-inter, "Inter"), sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: var(--color-paper);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Inter", system-ui, sans-serif;
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  min-height: 100dvh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.display {
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 24;
+}
+
+.material-symbols-outlined.filled {
+  font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 0, "opsz" 24;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.shadow-card {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.shadow-card-hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06), 0 12px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Kill Clerk keyless dev popup */
+.cl-keylessPrompt,
+[class*="keylessPrompt"],
+[class*="cl-internal"],
+[data-clerk-prompt],
+div[class*="clerk"][class*="keyless"],
+iframe[src*="clerk.com"][src*="keyless"],
+#__clerk_keyless_prompt,
+.clerk-keyless-prompt,
+[aria-label*="Clerk"],
+[aria-label*="clerk"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  position: fixed !important;
+  left: -9999px !important;
+  top: -9999px !important;
 }
