@@ -1,37 +1,42 @@
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
 import { decodeSession } from '@/lib/auth';
 
-const SESSION_COOKIE = 'mc_session';
-
 const PUBLIC_PATHS = [
-  /^\/$/,
-  /^\/pricing(\/.*)?$/,
-  /^\/auth\/(sign-in|sign-up)(\/.*)?$/,
-  /^\/api\/auth\/(login|signup|logout|me)$/,
-  /^\/api\/webhooks(\/.*)?$/,
+  '/auth/sign-in',
+  '/auth/sign-up',
+  '/',
+  '/pricing',
 ];
 
-export function proxy(req: NextRequest) {
-  const { pathname } = req.nextUrl;
+export default async function proxy(request: Request): Promise<Response | null> {
+  const url = new URL(request.url);
+  const pathname = url.pathname;
 
-  if (PUBLIC_PATHS.some((re) => re.test(pathname))) {
-    return NextResponse.next();
+  // Allow public paths
+  if (PUBLIC_PATHS.some(path => pathname === path || pathname.startsWith(path + '/'))) {
+    return null;
   }
 
-  const token = req.cookies.get(SESSION_COOKIE)?.value;
-  const userId = decodeSession(token);
+  // Check for session cookie
+  const cookieHeader = request.headers.get('cookie') || '';
+  const cookies: Record<string, string> = {};
+
+  cookieHeader.split(';').forEach(cookie => {
+    const [name, value] = cookie.trim().split('=');
+    if (name && value) cookies[name] = decodeURIComponent(value);
+  });
+
+  const sessionCookie = cookies['mc_session'];
+  const userId = decodeSession(sessionCookie);
 
   if (!userId) {
-    const url = req.nextUrl.clone();
-    url.pathname = '/auth/sign-in';
-    url.searchParams.set('redirect', pathname);
-    return NextResponse.redirect(url);
+    // Redirect to sign-in if not authenticated
+    return new Response(null, {
+      status: 307,
+      headers: {
+        Location: '/auth/sign-in',
+      },
+    });
   }
 
-  return NextResponse.next();
+  return null;
 }
-
-export const config = {
-  matcher: ['/((?!_next/static|_next/image|favicon.ico|.*\\..*).*)'],
-};

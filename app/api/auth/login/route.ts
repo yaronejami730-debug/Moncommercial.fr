@@ -17,17 +17,25 @@ export async function POST(req: Request) {
   }
   const email = parsed.data.email.toLowerCase();
 
-  const user = await db.query.users.findFirst({ where: eq(users.email, email) });
-  if (!user || !user.passwordHash || !verifyPassword(parsed.data.password, user.passwordHash)) {
+  try {
+    const user = await db.query.users.findFirst({ where: eq(users.email, email) });
+    if (!user || !user.passwordHash || !verifyPassword(parsed.data.password, user.passwordHash)) {
+      return NextResponse.json(
+        { error: 'Email ou mot de passe incorrect.' },
+        { status: 401 }
+      );
+    }
+
+    await setSession(user.id);
+
+    const redirect =
+      user.onboardingCompleted && user.role ? '/dashboard' : '/onboarding';
+    return NextResponse.json({ ok: true, redirect });
+  } catch (err) {
+    console.error('[login] failed:', err);
     return NextResponse.json(
-      { error: 'Email ou mot de passe incorrect.' },
-      { status: 401 }
+      { error: 'Erreur serveur. Vérifiez la configuration (DATABASE_URL, SESSION_SECRET).' },
+      { status: 500 }
     );
   }
-
-  await setSession(user.id);
-
-  const redirect =
-    user.onboardingCompleted && user.role ? '/dashboard' : '/onboarding';
-  return NextResponse.json({ ok: true, redirect });
 }
