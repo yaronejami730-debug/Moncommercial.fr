@@ -6,7 +6,7 @@ import OnboardingForm from './form';
 
 export default async function OnboardingPage() {
   const user = await getCurrentUser();
-  if (!user) redirect('/sign-in');
+  if (!user) redirect('/auth/sign-in');
   if (user.onboardingCompleted && user.role) redirect('/dashboard');
 
   return (
