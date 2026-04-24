@@ -89,10 +89,10 @@ export default function Home() {
       {/* ── Header ────────────────────────────────── */}
       <header className="sticky top-0 z-50 bg-paper border-b border-line">
         <div className="max-w-7xl mx-auto h-20 px-4 md:px-6 flex items-center justify-between gap-6">
-          <Link href="/" className="flex items-center flex-shrink-0" aria-label="MonCommercial.fr — accueil">
+          <Link href="/" className="flex items-center flex-shrink-0" aria-label="Centrale de l'Énergie — accueil">
             <Image
               src="/logo.png"
-              alt="MonCommercial.fr"
+              alt="Centrale de l'Énergie"
               width={1092}
               height={190}
               priority
@@ -700,7 +700,7 @@ export default function Home() {
               <div className="flex items-center mb-4 bg-white rounded-xl px-4 py-2 w-fit">
                 <Image
                   src="/logo.png"
-                  alt="MonCommercial.fr"
+                  alt="Centrale de l'Énergie"
                   width={1092}
                   height={190}
                   className="h-12 w-auto"
@@ -740,7 +740,7 @@ export default function Home() {
               </ul>
             </div>
           </div>
-          <p className="text-xs pt-6">&copy; 2026 MonCommercial.fr — Tous droits réservés.</p>
+          <p className="text-xs pt-6">&copy; 2026 Centrale de l'Énergie — Tous droits réservés.</p>
         </div>
       </footer>
     </div>

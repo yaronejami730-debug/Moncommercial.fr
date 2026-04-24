@@ -59,7 +59,7 @@ export default function DashboardShell({
             <Link href="/dashboard" className="flex flex-col gap-1">
               <Image
                 src="/logo.png"
-                alt="MonCommercial.fr"
+                alt="Centrale de l'Énergie"
                 width={1092}
                 height={190}
                 priority

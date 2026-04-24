@@ -56,10 +56,10 @@ export default async function PricingPage() {
     <div className="min-h-screen bg-paper-warm py-16 px-4">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12">
-          <Link href="/" className="inline-flex items-center mb-6" aria-label="MonCommercial.fr — accueil">
+          <Link href="/" className="inline-flex items-center mb-6" aria-label="Centrale de l'Énergie — accueil">
             <Image
               src="/logo.png"
-              alt="MonCommercial.fr"
+              alt="Centrale de l'Énergie"
               width={1092}
               height={190}
               priority

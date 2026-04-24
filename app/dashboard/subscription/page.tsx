@@ -47,7 +47,7 @@ export default async function SubscriptionPage() {
       <div>
         <h1 className="display text-3xl md:text-4xl text-ink">Abonnement</h1>
         <p className="text-ink-soft mt-2">
-          Gérez votre abonnement MonCommercial.fr.
+          Gérez votre abonnement à Centrale de l'Énergie.
         </p>
       </div>
 

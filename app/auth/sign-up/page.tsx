@@ -7,10 +7,10 @@ export default function SignUpPage() {
     <div className="min-h-screen flex items-center justify-center bg-paper-warm py-12 px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <Link href="/" className="inline-flex items-center" aria-label="MonCommercial.fr — accueil">
+          <Link href="/" className="inline-flex items-center" aria-label="Centrale de l'Énergie — accueil">
             <Image
               src="/logo.png"
-              alt="MonCommercial.fr"
+              alt="Centrale de l'Énergie"
               width={1092}
               height={190}
               priority

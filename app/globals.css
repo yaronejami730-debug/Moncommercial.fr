@@ -3,18 +3,22 @@
 @source "../components/**/*.{tsx,ts,jsx,js}";
 
 @theme {
-  /* Primary — vibrant orange énergie (solaire) */
-  --color-brand: #ea580c;
-  --color-brand-hover: #c2410c;
-  --color-brand-soft: #fff1e6;
-  --color-brand-ring: #fed7aa;
+  /* Primary — vert foncé énergie durable */
+  --color-brand: #2D7A4A;
+  --color-brand-hover: #1f4d2f;
+  --color-brand-soft: #E8F0E4;
+  --color-brand-ring: #A3D5A1;
 
-  /* Verification / trust — teal */
-  --color-verify: #059669;
-  --color-verify-soft: #d1fae5;
+  /* Accent — vert clair pour highlights */
+  --color-accent: #7EC742;
+  --color-accent-soft: #D4E8AA;
+
+  /* Verification / trust — orange accent */
+  --color-verify: #FF9933;
+  --color-verify-soft: #FFE4CC;
 
   /* Stars / gold */
-  --color-star: #f59e0b;
+  --color-star: #FF9933;
 
   /* Neutrals */
   --color-ink: #1a202c;
@@ -23,7 +27,7 @@
   --color-ink-faint: #a0aec0;
   --color-paper: #ffffff;
   --color-paper-tint: #f7fafc;
-  --color-paper-warm: #fffaf2;
+  --color-paper-warm: #F5EFE0;
   --color-line: #e2e8f0;
   --color-line-soft: #edf2f7;
 

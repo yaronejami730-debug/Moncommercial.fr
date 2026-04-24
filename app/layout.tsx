@@ -17,7 +17,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: 'MonCommercial.fr — Plateforme Énergie B2B',
+  title: 'Centrale de l\'Énergie — Plateforme Énergie B2B',
   description:
     "Mettez en relation installateurs, régies et commerciaux du secteur de l'énergie en France.",
 };
